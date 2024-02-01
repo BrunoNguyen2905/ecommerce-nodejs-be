@@ -11,6 +11,9 @@ app.use(helmet()); //Helmet helps secure Express apps by setting HTTP response h
 app.use(compression()); //The middleware will attempt to compress response bodies for all request that traverse through the middleware
 
 // init db
+require('./dbs/init.mongodb')
+const { checkOverload } = require("./helpers/check.connect")
+checkOverload()
 
 //init routes
 app.get("/", (req, res, next) => {
