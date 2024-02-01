@@ -2,8 +2,11 @@
 
 const mongoose = require("mongoose");
 const { countConnect } = require("../helpers/check.connect");
+const {
+  db: { host, port, name },
+} = require("../configs/config.mongdb");
 
-const connectString = "mongodb://localhost:27017/shopDEV";
+const connectString = `mongodb://${host}:${port}/${name}`;
 
 class Database {
   constructor() {
@@ -17,7 +20,7 @@ class Database {
     }
     mongoose
       .connect(connectString, {
-        maxPoolSize: 50
+        maxPoolSize: 50,
       })
       .then((_) => {
         console.log("Connected MongoDB successfully PRO");

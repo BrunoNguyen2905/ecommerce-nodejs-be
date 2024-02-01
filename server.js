@@ -1,6 +1,9 @@
 const app = require("./src/app");
+const {
+  app: { port: appPort },
+} = require("./src/configs/config.mongdb");
 
-const PORT = 3055;
+const PORT = appPort || 3055;
 
 const server = app.listen(PORT, () => {
   console.log("WSV eCommerce start with port", PORT);
